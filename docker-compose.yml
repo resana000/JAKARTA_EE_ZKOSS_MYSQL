@@ -1,0 +1,25 @@
+version: '2'
+
+services:
+  wildfly:
+    image: docker.io/bitnami/wildfly:27
+    ports:
+      - '8080:8080'
+      - '9990:9990'
+    volumes:
+      - 'wildfly_data:/bitnami'
+    environment:
+      - WILDFLY_PASSWORD=password
+
+  db:
+    image: mysql:8.0
+    volumes:
+      - "./.mysql-data/db:/var/lib/mysql"
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: test
+      MYSQL_DATABASE: test
+      MYSQL_USER: test
+      MYSQL_PASSWORD: test

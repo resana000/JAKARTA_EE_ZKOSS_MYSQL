@@ -1,0 +1,17 @@
+<?import org.demo.demo.ViewModel?>
+<zk>
+	<div viewModel="@id('vm') @init('ViewModel')" validationMessages="@id('vmsgs')">
+		Enter data:
+
+		company_name
+		<textbox id="companyName" value="@bind(vm.cmp.company_name)"
+			onOK="@command(ViewModel.SUBMIT_COMMAND)"/>
+		company_form
+		<textbox id="companyForm" value="@bind(vm.cmp.company_form)"
+			onOK="@command(ViewModel.SUBMIT_COMMAND)"/>
+		<button id="submit" label="submit" 
+			onClick='@command(ViewModel.SUBMIT_COMMAND)'/>
+		<separator/>
+		<label id="response" value="@load(vm.response)"/>
+	</div>
+</zk>
